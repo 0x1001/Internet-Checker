@@ -1,4 +1,14 @@
 def getModemPage():
+    """
+        This function connects to modem internal web pages and 
+        gets status information
+        
+        Input:
+        Nothing
+        
+        Returns:
+        Pages string
+    """
     import urllib2
 
     theurl = 'http://192.168.1.1'
@@ -15,6 +25,16 @@ def getModemPage():
     return pagehandle.read()
 
 def getModemStatus(page):
+    """
+        This function analises status pages and looks for string that
+        says it is connected to line
+        
+        Input:
+        Nothing
+        
+        Returns:
+        True/False
+    """
 
     stan_lini_idx = page.find("Stan linii")
 
@@ -23,19 +43,41 @@ def getModemStatus(page):
     else:
         return False
 
-if __name__ == "__main__":
+def startup(root):
+    """
+        This function performs some start up actions
+            - Prepares pid
+            
+        Input:
+        root    - Root path
+        
+        Returns:
+        Nothing
+    """
+    import os
+    
+    pid = os.path.join(root,"pid")
+    with open(pid,"w") as fp:
+        fp.write(str(os.getpid()))
+
+def internet_check(root):
+    """
+        This function performs internet check
+        Blocking function
+        
+        Input:
+        root        - Path to root folder
+        
+        Returns:
+        Nothing
+    """
     import time
     import datetime
     import os
-
-    root = os.path.dirname(os.path.abspath(__file__))
-    logs = os.path.join(root,"logs")
-    pid = os.path.join(root,"pid")
+    
+    logs = os.path.join(root,"logs") 
 
     if not os.path.exists(logs): os.mkdir(logs)
-
-    with open(pid,"w") as fp:
-        fp.write(str(os.getpid()))
 
     while True:
         now = datetime.datetime.now()
@@ -53,5 +95,14 @@ if __name__ == "__main__":
 
         print str(now) + " - " + info
 
-        time.sleep(60)
+        time.sleep(60)    
+        
+if __name__ == "__main__":
+    import os
+    root = os.path.dirname(os.path.abspath(__file__))
+    startup(root)
+    internet_check(root)
+    
+    
+
     

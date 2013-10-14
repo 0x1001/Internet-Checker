@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# /etc/rc.d/rc.internet_check
+#
+# Start/stop/restart the Internet check.
+#
+#
+
+INTERNET_CHECK=/home/kot/neo_test/internet_check.py
+PYTHON=/usr/local/bin/python
+
+i_start() {
+  echo -n "Starting Internet check..."
+  $PYTHON $INTERNET_CHECK &>/dev/null &
+  echo "Ok"
+}
+
+i_stop() {
+  root=`dirname $INTERNET_CHECK`
+  echo -n "Stopping Internet check..."
+  pid=`cat $root/pid`
+  kill $pid
+  rm $root/pid
+  echo "Ok"
+}
+
+i_restart() {
+  i_stop
+  sleep 2
+  i_start
+}
+
+case "$1" in
+'start')
+  i_start
+  ;;
+'stop')
+  i_stop
+  ;;
+'restart')
+  i_restart
+  ;;
+*)
+  i_start
+esac
