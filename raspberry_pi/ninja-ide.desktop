@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ninja-ide
+Comment=Ninja-ide
+Icon=/usr/share/ninja-ide/img/icon.png
+Exec=/usr/bin/ninja-ide
+Type=Application
+Encoding=UTF-8
+Terminal=false
