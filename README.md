@@ -14,7 +14,7 @@ Raspberry Install Script
 
 Basic installation script for Raspberry PI. Use it once you install Raspberry PI on SD card.
 
-Command:
+# Run command
 
 ```sh
 $ sudo ./install.sh
