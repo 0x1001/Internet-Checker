@@ -22,3 +22,5 @@ apt-get update
 apt-get install -y ninja-ide
 cp ninja-ide.desktop /home/pi/Desktop/
 
+# Proftpd
+sudo apt-get install -y proftpd
