@@ -24,3 +24,9 @@ cp ninja-ide.desktop /home/pi/Desktop/
 
 # Proftpd
 sudo apt-get install -y proftpd
+
+# Rdate
+sudo apt-get install -y rdate
+rdate -s time.nist.gov
+echo "0 * * * * root rdate -s time.nist.gov" >> /etc/crontab
+
