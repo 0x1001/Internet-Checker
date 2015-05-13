@@ -9,6 +9,7 @@ apt-get install -y mc
 
 # VNC
 apt-get install -y tightvnc
+apt-get install -y autocutsel
 cp vncboot /etc/init.d/
 chmod 755 /etc/init.d/vncboot
 tightvncserver
@@ -30,3 +31,5 @@ sudo apt-get install -y rdate
 rdate -s time.nist.gov
 echo "0 * * * * root rdate -s time.nist.gov" >> /etc/crontab
 
+# Pydev
+apt-get install -y python-dev
