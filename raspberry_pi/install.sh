@@ -33,3 +33,6 @@ echo "0 * * * * root rdate -s time.nist.gov" >> /etc/crontab
 
 # Pydev
 apt-get install -y python-dev
+
+# Screen
+apt-get install -y screen
