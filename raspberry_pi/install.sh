@@ -21,7 +21,11 @@ apt-get install -y python-pip
 #apt-add-repository ppa:ninja-ide-developers/daily
 apt-get update
 apt-get install -y ninja-ide
+if [ ! -d "/home/pi/Desktop" ]; then
+mkdir /home/pi/Desktop
+fi
 cp ninja-ide.desktop /home/pi/Desktop/
+
 
 # Proftpd
 sudo apt-get install -y proftpd
