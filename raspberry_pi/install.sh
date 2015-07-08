@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Installation script for Raspberry PI
+# Disabling swap to extend SD card life
+swapoff --all
+apt-get remove dphys-swapfile
 
+# Installation script for Raspberry PI
 apt-get update
 
 # MC
@@ -12,7 +15,7 @@ apt-get install -y tightvncserver
 apt-get install -y autocutsel
 cp vncboot /etc/init.d/
 chmod 755 /etc/init.d/vncboot
-tightvncserver
+su - pi -c "tightvncserver"
 
 # PIP
 apt-get install -y python-pip
