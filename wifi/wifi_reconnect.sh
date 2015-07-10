@@ -1,14 +1,9 @@
 #!/bin/bash
 
-IP=8.8.8.8
-IF=ra0
+IF=wlan0
 
-ping -c4 ${IP} > /dev/null
-
-if [ $? != 0 ]
-then
-    logger -t $0 "Wifi reconnect"
+wlan=`/sbin/ifconfig ${IF} | grep inet\ addr | wc -l`
+if [ $wlan -eq 0 ]; then
     ifdown --force ${IF}
     ifup ${IF}
 fi
-

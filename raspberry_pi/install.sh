@@ -15,7 +15,10 @@ apt-get install -y tightvncserver
 apt-get install -y autocutsel
 cp vncboot /etc/init.d/
 chmod 755 /etc/init.d/vncboot
+update-rc.d vncboot defaults
 su - pi -c "tightvncserver"
+cp -f xstartup /home/pi/.vnc
+chmod +x /home/pi/.vnc/xstartup
 
 # PIP
 apt-get install -y python-pip
@@ -31,7 +34,7 @@ cp ninja-ide.desktop /home/pi/Desktop/
 
 
 # Proftpd
-sudo apt-get install -y proftpd
+apt-get install -y proftpd
 
 # Rdate
 apt-get install -y rdate
